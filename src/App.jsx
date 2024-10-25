@@ -1,30 +1,35 @@
 import { useState } from 'react'
 import './App.css'
+import questionData from './questions.json'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [currentQuestion, setCurrentQuestion] = useState(0)
+  const [score, setScore] = useState(0)
+  const [showScore, setShowScore] = useState(false)
+  const [timer, setTimer] = useState(60)
 
   return (
     <>
     <div className="quiz-app">
-      <div className="score-section"
-        style = { {display:"none"}}>
+      {showScore ? (
+        <div className="score-section">
         <h2>Your Score : 3/3</h2>
         <button>Restart</button>
-      </div>
-      <div className="question-section">
-        <h2>Question 1</h2>
-        <p>This is sample question</p>
+      </div>) : (   
+        <div className="question-section">
+        <h2>Question {currentQuestion+1}</h2>
+        <p>{questionData[currentQuestion].question}</p>
         <div className="options">
-          <button>Option-1</button>
-          <button>Option-2 </button>
-          <button>Option-3 </button>
-          <button>Option-4</button>
+        { questionData[currentQuestion].options.map((option,index)=>(
+          <button key={index}>{option}</button>
+        ))}
         </div>
         <div className="timer">Time Left: 
-          <span>5s</span>
+          <span>{timer}s</span>
         </div>
-      </div>
+      </div>)
+      }
+   
     </div>
     </>
   )
