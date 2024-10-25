@@ -8,7 +8,7 @@ function App() {
     <>
     <div className="quiz-app">
       <div className="score-section"
-      style = { {display:"none"}}>
+        style = { {display:"none"}}>
         <h2>Your Score : 3/3</h2>
         <button>Restart</button>
       </div>
@@ -21,7 +21,9 @@ function App() {
           <button>Option-3 </button>
           <button>Option-4</button>
         </div>
-        <div className="timer">Time Left: 5s</div>
+        <div className="timer">Time Left: 
+          <span>5s</span>
+        </div>
       </div>
     </div>
     </>
